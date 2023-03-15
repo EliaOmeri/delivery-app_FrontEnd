@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card border-0 shadow rounded-3 my-5">
+        <div class="card-body p-4 p-sm-5">
+          <h5 class="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
+          <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+
+            <div class="form-floating mb-3">
+
+              <input type="text" class="form-control" name="firstName"  [(ngModel)]="form.firstName" required
+                minlength="3" maxlength="20" #firstName="ngModel" />
+                <label for="firstName" id="label-text">Firstname</label>
+              <div class="alert-danger" *ngIf="firstName.errors && f.submitted">
+                <div *ngIf="firstName.errors['required']">Firstname is required</div>
+                <div *ngIf="firstName.errors['minlength']">
+                  Firstname must be at least 3 characters
+                </div>
+                <div *ngIf="firstName.errors['maxlength']">
+                  Firstname must be at most 20 characters
+                </div>
+              </div>
+            </div>
+
+            <div class="form-floating mb-3">
+
+              <input type="text" class="form-control" name="lastname" [(ngModel)]="form.lastName" required minlength="3"
+                maxlength="20" #lastName="ngModel" />
+                    <label for="lastname" id="label-text">Lastname</label>
+              <div class="alert-danger" *ngIf="lastName.errors && f.submitted">
+                <div *ngIf="lastName.errors['required']">Lastname is required</div>
+                <div *ngIf="lastName.errors['minlength']">
+                  Lastname must be at least 3 characters
+                </div>
+                <div *ngIf="lastName.errors['maxlength']">
+                  Lastname must be at most 20 characters
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email
+                #email="ngModel" />
+                <label for="email" id="label-text">Email</label>
+              <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                <div *ngIf="email.errors['required']">Email is required</div>
+                <div *ngIf="email.errors['email']">
+                  Email must be a valid email address
+                </div>
+              </div>
+            </div>
+            <div class="form-floating mb-3">
+
+              <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required
+                minlength="6" #password="ngModel" />
+                <label for="password" id="label-text">Password</label>
+              <div class="alert-danger" *ngIf="password.errors && f.submitted">
+                <div *ngIf="password.errors['required']">Password is required</div>
+                <div *ngIf="password.errors['minlength']">
+                  Password must be at least 6 characters
+                </div>
+              </div>
+            </div>
+            <div class="form-floating mb-3">
+              <button class="btn btn-primary btn-block">Sign Up</button>
+            </div>
+
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+              Signup failed!<br />{{ errorMessage }}
+            </div>
+          </form>
+
+          <div class="alert alert-success" *ngIf="isSuccessful">
+            Your registration is successful!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
