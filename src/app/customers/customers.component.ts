@@ -11,21 +11,30 @@ import { UserService } from '../services/user.service';
 })
 export class CustomersComponent implements OnInit {
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService,private user : User) { }
   page: number = 1;
   customerList:User[] = [];
+   
+  status='';
 
-
+ 
   getCustomers(){
     return this.userService.getCustomers().subscribe((response) => {
       console.log(response)
       this.customerList = response;
+     
+ 
     })
+          
+     
+  
   }
+
 
 
   ngOnInit():void {
     this.getCustomers()
+  
   }
 
 

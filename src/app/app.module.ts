@@ -13,6 +13,7 @@ import { UserComponent } from './costumer/user/user.component';
 import { authInterceptorProviders } from './Authorization/auth.interceptor';
 import { CustomersComponent } from './customers/customers.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { User } from './model/user.model';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     NgxPaginationModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders
+  ,User],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

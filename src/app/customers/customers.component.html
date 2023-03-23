@@ -18,7 +18,8 @@
                 <th><span>Customer</span></th>
                 <!-- <th class="text-center"><span>Role</span></th> -->
                 <th><span>Email</span></th>
-       
+                <th><span>Status</span></th>
+              
               </tr>
               </thead>
               <tbody>
@@ -36,6 +37,7 @@
                 <td>
                   <a href="#">{{ customer.email }}</a>
                 </td>
+                <td>{{customer.active ? 'Active' : 'Disactive'}}</td>
                 <td class="text-center" style="width: 15%;">
   
                   <a  class="table-link">
