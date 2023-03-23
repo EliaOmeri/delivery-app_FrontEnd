@@ -172,3 +172,6 @@ body{margin-top:20px;}
 .table-stats .table-line-plus .status-social-icon {
 	color: #a75d54;
 }
+.form-control {
+    box-shadow: 0 10px 40px 0 #B0C1D9;
+  }
