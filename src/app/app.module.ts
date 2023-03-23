@@ -11,6 +11,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './costumer/admin/admin.component';
 import { UserComponent } from './costumer/user/user.component';
 import { authInterceptorProviders } from './Authorization/auth.interceptor';
+import { CustomersComponent } from './customers/customers.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,15 @@ import { authInterceptorProviders } from './Authorization/auth.interceptor';
     HomeComponent,
     ProfileComponent,
     AdminComponent,
-    UserComponent
+    UserComponent,
+    CustomersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
