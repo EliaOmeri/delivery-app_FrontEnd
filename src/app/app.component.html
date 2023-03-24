@@ -7,10 +7,11 @@
       </li>
       <li class="nav" *ngIf="showAdminBox">
         <a href="/admin" class="nav-link" routerLink="admin">Admin</a>
+
       </li>
 
       <li class="nav">
-        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
+        <a routerLink="customers" class="nav-link" *ngIf="isLoggedIn">Customers</a>
       </li>
     </ul>
 

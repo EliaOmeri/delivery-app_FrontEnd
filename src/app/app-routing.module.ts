@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserComponent } from './costumer/user/user.component';
 
 import { AdminComponent } from './costumer/admin/admin.component';
+import { CustomersComponent } from './customers/customers.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: UserComponent },
+  { path: 'customers', component: CustomersComponent },
 
   { path: 'admin', component: AdminComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
@@ -25,3 +27,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
