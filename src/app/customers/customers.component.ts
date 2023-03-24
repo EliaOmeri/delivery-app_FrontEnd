@@ -11,53 +11,36 @@ import { UserService } from '../services/user.service';
 })
 export class CustomersComponent implements OnInit {
 
-  constructor(private userService:UserService,private user : User) { }
+  constructor(private userService: UserService, private user: User) { }
   page: number = 1;
-  customerList:User[] = [];
-  status='';
-  query:string ='';
+  customerList: User[] = [];
+  status = '';
+  query: string = '';
+  selectedOption: string = '';
 
- 
-  getCustomers(){
+  getCustomers() {
     return this.userService.getCustomers().subscribe((response) => {
       this.customerList = response;
-    })  
+    })
   }
 
-  // searchCustomer() {
-  //   if (this.query === '') {
-  //    return this.getCustomers();
-  //   } else {
-  //     return this.customerList.filter(customer =>
-  //       customer.firstName.toLowerCase().includes(this.query.toLowerCase()) ||
-  //       customer.lastName.toLowerCase().includes(this.query.toLowerCase())
-  //     );
-      
-  //   }
-  // }
-  // searchCustomer() {
-  //   if (this.query === '') {
-  //     return this.getCustomers();
-  //   } else {
-  //     return this.customerList.filter(customer =>
-  //       customer.firstName.toLowerCase().includes(this.query.toLowerCase()) ||
-  //       customer.lastName.toLowerCase().includes(this.query.toLowerCase()) ||
-  //       customer.firstName.toLowerCase().includes(this.query.slice(0, this.query.length).toLowerCase()) ||
-  //       customer.lastName.toLowerCase().includes(this.query.slice(0, this.query.length).toLowerCase())
-  //     );
-  //   }
-  // }
-  // searchCustomer() {
-  //   if (this.query === '') {
-  //     return this.getCustomers();
-  //   } else {
-  //     return this.customerList.filter((customer: User) => {
-  //        customer.firstName.toLowerCase().includes(this.query.toLowerCase()) ||
-  //              customer.lastName.toLowerCase().includes(this.query.toLowerCase());
-  //     });
-  //   }
-  // }
-  
+  searchCustomer() {
+    let filteredList = this.customerList;
+
+    if (this.selectedOption === 'active' || !this.selectedOption) {
+      filteredList = filteredList.filter(customer => customer.active);
+    } else if (this.selectedOption === 'inactive') {
+      filteredList = filteredList.filter(customer => !customer.active);
+    }
+
+    if (this.query !== '') {
+      filteredList = filteredList.filter(customer =>
+        customer.firstName.toLowerCase().includes(this.query.toLowerCase())
+      );
+    }
+
+    return filteredList;
+  }
 
   ngOnInit() {
     this.getCustomers()

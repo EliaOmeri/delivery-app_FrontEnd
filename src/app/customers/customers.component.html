@@ -1,22 +1,29 @@
 <div class="container">
-
-  <!-- <div class="col-4 navbar p-3 ps-0">
-        <input class="form-control" type="text" name="fullName" [(ngModel)]="fullName"
-               (ngModelChange)="Search()" placeholder="Enter user fullname">
-               
-      </div> -->
-
-  <div class="col-6 d-flex">
-    <div class="col-md-6 p-3 ps-0">
+  <div class="d-flex">
+    <div class="col-md-4 p-3 ps-0">
       <button type="button" class="btn btn-success">Add Customer</button>
     </div>
-    <div class="col-md-6 pt-3 ps-0">
+    <div class="col-md-8 pt-3 d-flex justify-content-end">
       <div class="form-group">
         <input type="text" class="form-control mb-2" placeholder="Search customer..." [(ngModel)]="query">
       </div>
+      <div class="form-check pt-2" style="margin-left: 15px;">
+        <input type="radio" class="form-check-input" id="active" name="optradio" value="active"
+          [(ngModel)]="selectedOption">Active
+        <label class="form-check-label" for="active"></label>
+      </div>
+      <div class="form-check- pt-2" style="margin-left: 15px;">
+        <input type="radio" class="form-check-input" id="inactive" name="optradio" value="inactive"
+          [(ngModel)]="selectedOption">Inactive
+        <label class="form-check-label" for="inactive"></label>
+      </div>
+      <div class="form-check pt-2" style="margin-left: 15px;">
+        <input type="radio" class="form-check-input" id="all" name="optradio" value="all"
+          [(ngModel)]="selectedOption">All
+        <label class="form-check-label" for="all"></label>
+      </div>
     </div>
   </div>
-
 
   <div class="col-lg-12">
     <div class="main-box clearfix">
@@ -25,28 +32,21 @@
           <thead>
             <tr>
               <th><span>Customer</span></th>
-              <!-- <th class="text-center"><span>Role</span></th> -->
               <th><span>Email</span></th>
               <th><span>Status</span></th>
 
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let customer of customerList | filter:query | paginate: {itemsPerPage:10,currentPage:page};">
+            <tr *ngFor="let customer of (searchCustomer() | paginate: { itemsPerPage: 10, currentPage: page })">
               <td>
 
                 <a class="">{{ customer.firstName+' '+customer.lastName }}</a>
-                <!-- <span class="user-subhead">{{ customer.role }}</span> -->
               </td>
-              <!-- <td></td> -->
-
-              <!-- <td class="text-center">
-                  <span class="label label-default">{{ (customer.role + '').toLowerCase() }}</span>
-                </td> -->
               <td>
                 <a href="#">{{ customer.email }}</a>
               </td>
-              <td>{{customer.active ? 'Active' : 'Disactive'}}</td>
+              <td>{{customer.active ? 'Active' : 'Inactive'}}</td>
               <td class="text-center" style="width: 15%;">
 
                 <a class="table-link">
