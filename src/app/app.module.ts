@@ -11,6 +11,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './costumer/admin/admin.component';
 import { UserComponent } from './costumer/user/user.component';
 import { authInterceptorProviders } from './Authorization/auth.interceptor';
+// import { CustomersComponent } from './components/customers/customers.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,16 @@ import { authInterceptorProviders } from './Authorization/auth.interceptor';
     HomeComponent,
     ProfileComponent,
     AdminComponent,
-    UserComponent
+    UserComponent,
+    // CustomersComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

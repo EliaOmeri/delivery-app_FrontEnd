@@ -1,5 +1,67 @@
-<div class="container">
-  <header class="card">
-    <p class="text-center">{{ content }}</p>
-  </header>
-</div>
+<nav  class="navbar p-3" style="background-color: #f7f7f7;">
+  <a class="font-effect-shadow-multiple fs-5" href="" style="color:#353a3e;">Delivery Food</a>
+  <ul class="navbar ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav">
+        <a routerLink="/register" class="nav-link" routerLink="register">Sign Up</a>
+      </li>
+      <li class="nav">
+        <a routerLink="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+
+    <ul class="navbar ml-auto" *ngIf="isLoggedIn">
+      <li class="nav">
+        <a routerLink="/profile" class="nav-link" routerLink="profile">{{ firstName }}</a>
+        <a routerLink="/profile" class="nav-link" routerLink="profile">{{ lastName }}</a>
+      </li>
+    </ul>
+</nav>
+
+  <div *ngIf="isLoggedIn" class="area">
+      <nav class="main-menu pt-4">
+          <ul>
+              <li *ngIf="isAdmin">
+                  <a routerLink='customers'>
+                      <i class="fa fa-list fa-2x"></i>
+                      <span class="nav-text">
+                          Customers
+                      </span>
+                  </a>
+              </li>
+              <li *ngIf="isAdmin" class="has-subnav">
+                  <a routerLink="#">
+                      <i class="fa fa-book fa-2x"></i>
+                      <span class="nav-text">
+                          Menu
+                      </span>
+                  </a>
+              </li>
+              <li *ngIf="isAdmin" class="has-subnav">
+                  <a routerLink="#">
+                      <i class="fa  fa-calendar fa-2x"></i>
+                      <span class="nav-text">
+                          Daily Menu
+                      </span>
+                  </a>
+              </li>
+              <li class="has-subnav">
+                  <a routerLink="#">
+                      <i class="fa  fa-cutlery fa-2x"></i>
+                      <span class="nav-text">
+                          Order Food
+                      </span>
+                  </a>
+              </li>
+          </ul>
+          <ul class="logout">
+              <li>
+                  <a href (click)="logout()">
+                      <i class="fa fa-power-off fa-2x"></i>
+                      <span class="nav-text">
+                          Logout
+                      </span>
+                  </a>
+              </li>
+          </ul>
+      </nav>
+  </div>
